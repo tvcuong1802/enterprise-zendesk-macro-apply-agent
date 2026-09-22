@@ -1,0 +1,32 @@
+# Runtime configuration for CMN-C1-613.
+#
+# `sample_macros` stands in for the Zendesk macro catalogue when no credential is wired to
+# this deployment. Without it MacroListNode returned an empty candidate set, every step
+# after it had nothing to work on, and a person trying the template was told
+# "Cannot execute: no Zendesk credential is configured" — true, and a demonstration of
+# nothing.
+#
+# SAMPLE DATA. These are not any helpdesk's macros and nobody has approved them. Every
+# answer built on them is announced: `using_sample_data` reaches the envelope, which prints
+# a notice above the reply. An adopter wiring a real Zendesk token never touches this block.
+sample_macros:
+  - id: 360001
+    title: "Refund approved"
+    has_public_comment: true
+    active: true
+    description: "Notifies the requester that a refund has been approved and sets status to solved."
+  - id: 360002
+    title: "Refund declined — outside window"
+    has_public_comment: true
+    active: true
+    description: "Explains that the return window has closed; sets status to pending."
+  - id: 360003
+    title: "Escalate to billing"
+    has_public_comment: false
+    active: true
+    description: "Adds an internal note and assigns the ticket to the billing group."
+  - id: 360004
+    title: "Request order number"
+    has_public_comment: true
+    active: true
+    description: "Asks the requester for the order number before proceeding."
